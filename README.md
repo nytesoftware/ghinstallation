@@ -1,6 +1,6 @@
 # ghinstallation
 
-[![GoDoc](https://godoc.org/github.com/bradleyfalzon/ghinstallation?status.svg)](https://godoc.org/github.com/bradleyfalzon/ghinstallation)
+[![GoDoc](https://godoc.org/github.com/nytesoftware/ghinstallation?status.svg)](https://godoc.org/github.com/nytesoftware/ghinstallation)
 
 `ghinstallation` provides `Transport`, which implements `http.RoundTripper` to
 provide authentication as an installation for GitHub Apps.
@@ -16,13 +16,13 @@ https://developer.github.com/apps/building-integrations/setting-up-and-registeri
 Get the package:
 
 ```bash
-GO111MODULE=on go get -u github.com/bradleyfalzon/ghinstallation/v2
+GO111MODULE=on go get -u github.com/nytesoftware/ghinstallation
 ```
 
 # GitHub Example
 
 ```go
-import "github.com/bradleyfalzon/ghinstallation/v2"
+import "github.com/nytesoftware/ghinstallation"
 
 func main() {
     // Shared transport to reuse TCP connections.
@@ -44,7 +44,7 @@ func main() {
 For clients using GitHub Enterprise, set the base URL as follows:
 
 ```go
-import "github.com/bradleyfalzon/ghinstallation/v2"
+import "github.com/nytesoftware/ghinstallation"
 
 const GitHubEnterpriseURL = "https://github.example.com/api/v3"
 
@@ -89,4 +89,4 @@ WebHook request
 
 # Dependencies
 
--   [github.com/golang-jwt/jwt-go](https://github.com/golang-jwt/jwt-go)
+- [github.com/golang-jwt/jwt-go](https://github.com/golang-jwt/jwt-go)

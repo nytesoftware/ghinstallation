@@ -1,4 +1,4 @@
-module github.com/nytesoftware/ghinstallation/v2
+module github.com/nytesoftware/ghinstallation
 
 go 1.13
 
