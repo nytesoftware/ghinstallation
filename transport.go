@@ -117,7 +117,11 @@ func (t *Transport) RoundTrip(req *http.Request) (*http.Response, error) {
 	}
 
 	req.Header.Set("Authorization", "token "+token)
-	req.Header.Add("Accept", acceptHeader) // We add to "Accept" header to avoid overwriting existing req headers.
+
+	if req.Header.Get("Accept") == "" { // Only set "Accept" header if there is no pre-existing value
+		req.Header.Set("Accept", acceptHeader)
+	}
+
 	resp, err := t.tr.RoundTrip(req)
 	return resp, err
 }
@@ -170,7 +174,10 @@ func (t *Transport) refreshToken(ctx context.Context) error {
 	if body != nil {
 		req.Header.Set("Content-Type", "application/json")
 	}
-	req.Header.Set("Accept", acceptHeader)
+
+	if req.Header.Get("Accept") == "" {
+		req.Header.Set("Accept", acceptHeader)
+	}
 
 	if ctx != nil {
 		req = req.WithContext(ctx)

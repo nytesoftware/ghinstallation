@@ -82,7 +82,10 @@ func (t *AppsTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 	}
 
 	req.Header.Set("Authorization", "Bearer "+ss)
-	req.Header.Add("Accept", acceptHeader)
+
+	if req.Header.Get("Accept") == "" { // Only set "Accept" header if there is no pre-existing value
+		req.Header.Set("Accept", acceptHeader)
+	}
 
 	resp, err := t.tr.RoundTrip(req)
 	return resp, err
